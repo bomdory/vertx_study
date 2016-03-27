@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<!-- 
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-route.min.js"></script>
+ -->
+<script src="../lib/ng/1215/angular.min.js"></script>
+<script src="../lib/ng/1215/angular-route.min.js"></script>
+<script type="text/javascript" src="script.js"></script>
+</head>
+
+<body id="ng-app" ng-app="app">
+	<div class="container" >
+			<a href="#/">Home</a> | 
+		<a href="#/sql">SQL</a> |  
+		<a href="#/test">TEST</a> |  
+		<a href="#/db">DB 관리</a> | 
+		<a href="#/module">모듈 관리</a> |
+		<a href="#/api">API 관리</a> |
+		<a href="#/edit">수정</a> |  
+		<a href="/logout">Logout</a>
+		<hr />
+		<div ng-view></div>
+	</div>
+</body>
+</html>

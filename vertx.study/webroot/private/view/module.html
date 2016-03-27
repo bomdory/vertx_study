@@ -1,0 +1,47 @@
+<div class="container">
+	<div>
+		<form name="RegistForm" id="regist-form" method="post">
+			<div class="form-group">
+				<label>모듈명 : </label><input type="text" ng-model="request.name"	name="name" required="required"></input><br>
+				<label>class명 : </label><input type="text" ng-model="request.className" >{{request.className}}</input> <br>
+				<label>worker? : </label><input type="checkbox" ng-model="request.worker" >{{request.work}}</input> <br>
+				<label>MultiThread?: </label><input type="checkbox" ng-model="request.thread" >{{request.thread}}</input> <br>
+				<label>Instance수: </label><input type="number" ng-model="request.instanceCnt" >{{request.instancCnt}}</input> <br>
+				<label>HA : </label><input type="checkbox" ng-model="request.ha" >{{request.ha}}</input> <br>
+				<label>기본시작?: </label><input type="checkbox" ng-model="request.start" >{{request.start}}</input> <br>
+				
+				<label>메모</label>
+				<textarea class="form-control" type="text" ng-model="request.memo"></textarea>
+
+				<br>
+				<button ng-href='/' class="btn btn-warning"
+					ng-click="registModule(request)">등록</button>
+				<span ng-show=registModule> ==> {{registModule}}</span>
+			</div>
+		</form>
+	</div>
+
+	<hr>
+
+	<button ng-href='/' class="btn btn-primary" ng-click="getAllModule()">보기</button>
+	<hr>
+	<div>
+		<table class="table table-bordered table-striped sortable">
+			<thead>
+				<tr>
+					<th ng-show="columnNames">#</th>
+					<th ng-repeat="c in columnNames"><a href=""
+						ng-click="order(c, reverse)">{{c}}<span
+							class="glyphicon glyphicon-stop"
+							ng-class="icon(c,predicate,reverse)"> </span>
+					</a></th>
+				</tr>
+			<tbody>
+				<tr ng-repeat="d in rows | orderBy:predicate:reverse">
+					<td>{{$index+1}}</td>
+					<td ng-repeat="c in columnNames">{{d[c]}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

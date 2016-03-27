@@ -1,0 +1,41 @@
+<div class="container" ng-controller="sqlCtrl">
+	<div>
+		<form name="AddNewForm" aid="add-new-form" method="post">
+			<div class="form-group">
+				SQL :
+				<textarea class="form-control" type="text" ng-model="request.sql"
+					required></textarea>
+				<button ng-href='/' class="btn btn-primary"
+					ng-click="request(request)">query!</button>
+				<span ng-show=result> ==> {{result}}</span>
+
+			</div>
+		</form>
+	</div>
+	<hr>
+	<div>
+		<pre>{{prevSql}}</pre>
+		<!-- 
+			<pre>Sorting predicate = {{predicate}}; sort = {{howSort}}</pre>
+			 -->
+		[ <a href="" ng-click="predicate=''">unsorted</a> ]
+		<table class="table table-bordered table-striped sortable">
+			<thead>
+				<tr>
+					<th ng-show="columnNames">#</th>
+					<th ng-repeat="c in columnNames"><a href=""
+						ng-click="order(c, reverse)">{{c}}<span
+							class="glyphicon glyphicon-stop"
+							ng-class="icon(c,predicate,reverse)"> </span>
+					</a></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="d in rows | orderBy:predicate:reverse">
+					<td>{{$index+1}}</td>
+					<td  contenteditable="true" ng-repeat="c in columnNames">{{d[c]}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

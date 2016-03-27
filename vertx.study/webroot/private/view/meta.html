@@ -1,0 +1,19 @@
+<button ng-href='/' class="btn btn-primary" ng-click="request()">메타조회</button>
+<hr/>
+<div ng-repeat="table in data">
+	<div>
+		[{{table.name}}]
+		<table class="table table-bordered table-striped sortable">
+			<thead>
+				<tr>
+					<th ng-repeat="c in table.columnNames"><a href=""
+						ng-click="order(c, reverse)">{{c}}</a></th>
+				</tr>
+			<tbody>
+				<tr ng-repeat="d in table.rows | orderBy:predicate:reverse">
+					<td ng-repeat="c in table.columnNames">{{d[c]}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

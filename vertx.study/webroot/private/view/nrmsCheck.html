@@ -1,0 +1,44 @@
+<div class="container">
+	[NRMS 확인]
+	<div>
+		<button ng-disabled="running" class="btn btn-primary" ng-click="showResult('ctErrorCheck')">CT
+			오류확인</button>
+		<button ng-disabled="running" class="btn btn-primary" ng-click="showResult('ctErrorList')">CT
+			재처리대상</button>
+		<button ng-disabled="running" class="btn btn-warning" ng-click="showResult('ctUnsync')">CT
+			재처리</button>
+		<button ng-disabled="running" class="btn btn-primary"
+			ng-click="showResult('ctProcessCheck')">CT 처리현황</button>
+		<button ng-disabled="running" class="btn btn-primary" ng-click="showResult('nlmCheck')">NLM
+			처리현황</button>
+		<button ng-disabled="running" class="btn btn-primary" ng-click="showResult('rtCheck')">RT
+			오류확인</button>
+
+	</div>
+	<hr>
+	<div ng-show="running" >
+	
+	<H2>처리중</H2>
+	
+	</div>
+	[결과]
+	<div ng-show="nrmsResult" >
+		<table class="table table-bordered table-striped sortable">
+			<thead>
+				<tr>
+					<th ng-show="nrmsResult.columnNames">#</th>
+					<th ng-repeat="c in nrmsResult.columnNames"><a href=""
+						ng-click="order(c, reverse)">{{c}}<span
+							class="glyphicon glyphicon-stop"
+							ng-class="icon(c,predicate,reverse)"> </span>
+					</a></th>
+				</tr>
+			<tbody>
+				<tr ng-repeat="row in nrmsResult.rows | orderBy:predicate:reverse">
+					<td>{{$index+1}}</td>
+					<td ng-repeat="c in nrmsResult.columnNames">{{row[c]}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>

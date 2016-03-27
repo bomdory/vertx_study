@@ -1,0 +1,130 @@
+<div>
+	<form name="AddNewForm" id="add-new-form" method="post">
+		<div class="form-group">
+			통합국소ID : <input type="text" ng-model="kukco" required></input>
+			<button ng-href='/' class="btn btn-primary" ng-click="request(kukco)">확인</button>
+			<span ng-show="result"> ==> {{result}}</span>
+		</div>
+	</form>
+</div>
+
+<div ng-show="data.O_ZTAA370.rows">
+	<button ng-href='/' class="btn btn-warning" ng-click="nlmResync(kukco)">NLM재연동</button>
+	[NLM ==> ABAS 재연동]
+</div>
+
+<hr>
+<div>
+	[O_ZTAA370-마스터]
+	<table class="table table-bordered table-striped sortable">
+		<thead>
+			<tr>
+				<th ng-repeat="c in data.O_ZTAA370.columnNames"><a href=""
+					ng-click="order(c, reverse)">{{c}}</a></th>
+			</tr>
+		<tbody>
+			<tr ng-repeat="d in data.O_ZTAA370.rows | orderBy:predicate:reverse">
+				<td ng-repeat="c in data.O_ZTAA370.columnNames">{{d[c]}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div>
+	[O_ZTAA371-위치정보]
+	<table class="table table-bordered table-striped sortable">
+		<thead>
+			<tr>
+				<th ng-repeat="c in data.O_ZTAA371.columnNames"><a href=""
+					ng-click="order(c, reverse)">{{c}}</a></th>
+			</tr>
+		<tbody>
+			<tr ng-repeat="d in data.O_ZTAA371.rows | orderBy:predicate:reverse">
+				<td ng-repeat="c in data.O_ZTAA371.columnNames">{{d[c]}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div>
+	[O_ZTAA374-부동산정보]
+	<table class="table table-bordered table-striped sortable">
+		<thead>
+			<tr>
+				<th ng-repeat="c in data.O_ZTAA374.columnNames"><a href=""
+					ng-click="order(c, reverse)">{{c}}</a></th>
+			</tr>
+		<tbody>
+			<tr ng-repeat="d in data.O_ZTAA374.rows | orderBy:predicate:reverse">
+				<td ng-repeat="c in data.O_ZTAA374.columnNames">{{d[c]}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div>
+	[O_ZTAA377-구성정보]
+	<table class="table table-bordered table-striped sortable">
+		<thead>
+			<tr>
+				<th ng-repeat="c in data.O_ZTAA377.columnNames"><a href=""
+					ng-click="order(c, reverse)">{{c}}</a></th>
+			</tr>
+		<tbody>
+			<tr ng-repeat="d in data.O_ZTAA377.rows | orderBy:predicate:reverse">
+				<td ng-repeat="c in data.O_ZTAA377.columnNames">{{d[c]}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div>
+	[O_ZTAA378]
+	<table class="table table-bordered table-striped sortable">
+		<thead>
+			<tr>
+				<th ng-repeat="c in data.O_ZTAA378.columnNames"><a href=""
+					ng-click="order(c, reverse)">{{c}}</a></th>
+			</tr>
+		<tbody>
+			<tr ng-repeat="d in data.O_ZTAA378.rows | orderBy:predicate:reverse">
+				<td ng-repeat="c in data.O_ZTAA378.columnNames">{{d[c]}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div>
+	[O_ZTAA379]
+	<table class="table table-bordered table-striped sortable">
+		<thead>
+			<tr>
+				<th ng-repeat="c in data.O_ZTAA379.columnNames"><a href=""
+					ng-click="order(c, reverse)">{{c}}</a></th>
+			</tr>
+		<tbody>
+			<tr ng-repeat="d in data.O_ZTAA379.rows | orderBy:predicate:reverse">
+				<td ng-repeat="c in data.O_ZTAA378.columnNames">{{d[c]}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+
+<div>
+	[O_ZTAA381-안테나]
+	<table class="table table-bordered table-striped sortable">
+		<thead>
+			<tr>
+				<th ng-repeat="c in data.O_ZTAA381.columnNames"><a href=""
+					ng-click="order(c, reverse)">{{c}}</a></th>
+			</tr>
+			</th>
+			</tr>
+		<tbody>
+			<tr ng-repeat="d in data.O_ZTAA381.rows | orderBy:predicate:reverse">
+				<td ng-repeat="c in data.O_ZTAA381.columnNames">{{d[c]}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

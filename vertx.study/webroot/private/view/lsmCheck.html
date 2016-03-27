@@ -1,0 +1,94 @@
+<div>
+	<table class="table table-bordered table-striped sortable">
+		<thead>
+			<tr>
+				<th ng-repeat="c in table.columnNames"><a href=""
+					ng-click="order(c, reverse)">이력<span
+						class="glyphicon glyphicon-stop"
+						ng-class="icon(c,predicate,reverse)"> </span>
+				</a></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="d in table.rows | orderBy:predicate:reverse">
+				<td ng-repeat="c in table.columnNames"><a href=""
+					ng-click="showDetail(d[c])">{{d[c]}}</a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+
+<div ng-show="detail">
+	<div ng-repeat="table in detail">
+		<div>
+			[{{table.name}}]
+			<table class="table table-bordered table-striped sortable">
+				<thead>
+					<tr>
+						<th ng-show="table.columnNames">#</th>
+						<th ng-repeat="c in table.columnNames"><a href=""
+							ng-click="order(c, reverse)">{{c}} <span
+								class="glyphicon glyphicon-stop"
+								ng-class="icon(c,predicate,reverse)"> </span>
+						</a></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr ng-repeat="d in table.rows | orderBy:predicate:reverse">
+						<td>{{$index+1}}</td>
+						<td ng-repeat="c in table.columnNames">{{d[c]}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<hr>
+
+<div>
+	<form name="lsmCheck" id="lsmCheck" method="post">
+		<div class="form-group">
+			루트 DIR : <input type="text" ng-model="rootDir" name="rootDir" />
+			<button ng-href='/' class="btn btn-primary"
+				ng-click="request(rootDir)">확인</button>
+			<span ng-show="result"> ==> {{result}}</span>
+		</div>
+	</form>
+</div>
+
+<div ng-repeat="table in data">
+	<div>
+		[{{table.name}}]
+		<table class="table table-bordered table-striped sortable">
+			<thead>
+				<tr>
+					<th ng-show="table.columnNames">#</th>
+					<th ng-repeat="c in table.columnNames"><a href=""
+						ng-click="order(c, reverse)">{{c}} <span
+							class="glyphicon glyphicon-stop"
+							ng-class="icon(c,predicate,reverse)"> </span>
+					</a></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr ng-repeat="d in table.rows | orderBy:predicate:reverse">
+					<td>{{$index+1}}</td>
+					<td ng-repeat="c in table.columnNames">{{d[c]}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
+<div ng-show="data">
+	<form name="lsmSave" id="lsmSave" method="post">
+		<div class="form-group">
+			<button ng-href='/#/lsmCheck' class="btn btn-warning" ng-click="save(data)">저장</button>
+		</div>
+	</form>
+</div>

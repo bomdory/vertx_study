@@ -1,0 +1,54 @@
+<div class="container">
+	<div>
+		<form name="RegistForm" id="regist-form" method="post">
+			<div class="form-group">
+				<label>이름 : </label><input type="text" ng-model="request.name"
+					name="name" required="required"></input><br>
+					 <label>시스템 : </label><select
+					ng-model="request.db" value="h2">
+					<option value="h2">H2</option>
+					<option value="nrms">NRMS</option>
+					<option value="abas">ABAS</option>
+				</select> <br>
+				 <label>Address : </label>
+				 <input type="text"
+					ng-model="request.address"></input><br> 
+				<label>SQL</label>
+				<textarea class="form-control" type="text" ng-model="request.sql"
+					required></textarea>
+
+				<label>메모</label>
+				<textarea class="form-control" type="text" ng-model="request.memo"></textarea>
+
+				<br>
+				<button ng-href='/' class="btn btn-warning"
+					ng-click="regist(request)">저장</button>
+				<span ng-show=registResult> ==> {{registResult}}</span>
+			</div>
+		</form>
+	</div>
+
+	<hr>
+
+	<button ng-href='/' class="btn btn-primary" ng-click="getAllRequest()">보기</button>
+	<hr>
+	<div>
+		<table class="table table-bordered table-striped sortable">
+			<thead>
+				<tr>
+					<th ng-show="columnNames">#</th>
+					<th ng-repeat="c in columnNames"><a href=""
+						ng-click="order(c, reverse)">{{c}}<span
+							class="glyphicon glyphicon-stop"
+							ng-class="icon(c,predicate,reverse)"> </span>
+					</a></th>
+				</tr>
+			<tbody>
+				<tr ng-repeat="d in rows | orderBy:predicate:reverse">
+					<td>{{$index+1}}</td>
+					<td ng-repeat="c in columnNames">{{d[c]}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
